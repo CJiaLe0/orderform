@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>短信登录</title>
+    <title>sms_login</title>
     <link rel="stylesheet" href="{% static 'plugins/bootstrap/css/bootstrap.css' %}">
     <style>
         .box {
@@ -27,17 +27,17 @@
         <h2 style="text-align: center">短信登录</h2>
         {% csrf_token %}
         <div class="form-group">
-            <label>手机号</label>
-            <input type="text" class="form-control" placeholder="手机号">
+            <label class="">手机号</label>
+            <input type="text" class="form-control" name="mobile" placeholder="手机号">
         </div>
         <div class="form-group">
-            <label>短信验证码</label>
+            <label for="">短信验证码</label>
             <div class="row">
                 <div class="col-xs-7">
-                    <input type="text" class="form-control" placeholder="短信验证码">
+                    <input type="text" class="form-control" name="auth_code" placeholder="短信验证码">
                 </div>
                 <div class="col-xs-5">
-                    <input type="button" value="发送短信" class="btn btn-default">
+                    <button type="submit" class="btn btn-secondary" id="sendCode" name="sendCode">发送验证码</button>
                 </div>
             </div>
         </div>

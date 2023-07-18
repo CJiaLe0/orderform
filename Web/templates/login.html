@@ -3,8 +3,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>登录</title>
-    <link rel="stylesheet" href="{% static ''%}">
+    <title>login</title>
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap/css/bootstrap.css'%}">
     <style>
         .box {
             width: 450px;
@@ -22,27 +22,32 @@
     </style>
 </head>
 <body>
+
 <div class="box">
     <h2 style="text-align: center">用户登录</h2>
-    <form>
+    <form method="post" novalidate>
         {% csrf_token %}
         <div class="form-group">
             <label>角色</label>
-            {{ form.role }}
+            <select class="form-control">
+               <option>管理员</option>
+               <option>客户</option>
+            </select>
         </div>
         <div class="form-group">
-            <label>用户名</label>
-            {{ form.username }}
+            <label for="username">用户名</label>
+            <input type="text" class="form-control" id="username" name="username" placeholder="用户名">
         </div>
         <div class="form-group">
-            <label>密码</label>
-            {{ form.password }}
+            <label for="password">密码</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="账户密码">
         </div>
         <button type="submit" class="btn btn-primary">登 录</button>
         <span style="color: red">{{ error }}</span>
 
-{#        <a href="{% url 'sms_login' %}" style="float: right">短信登录</a>#}
+        <a href="{% url 'sms_login' %}" style="float: right">短信登录</a>
     </form>
 </div>
+
 </body>
 </html>
