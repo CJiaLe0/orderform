@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import pymysql
+import django_redis
 
 
 pymysql.install_as_MySQLdb()
@@ -87,6 +88,14 @@ DATABASES = {
         'PASSWORD': "123456",
         'PORT': '3306',
         'HOST': '127.0.0.1'
+    },
+    'rid': {
+        "BACKEND": 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://127.0.0.1',
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+            'CONNECTION_POOL_KWARGS': {"max_connections": "100"}
+        }
     }
 }
 

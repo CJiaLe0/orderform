@@ -30,6 +30,8 @@ class Level(ActiveBaseModel):
 
 class Customer(ActiveBaseModel):
     """客户表"""
+    # decimal_places 指定数字小数位是几位
+    # max_digits 指定数字最大位数
     username = models.CharField(verbose_name="用户名", max_length=32, db_index=True)
     password = models.CharField(verbose_name="密码", max_length=64)
     mobile = models.CharField(verbose_name="手机号", max_length=11, db_index=True)
@@ -47,6 +49,7 @@ class PricePolicy(ActiveBaseModel):
 
 class Order(ActiveBaseModel):
     """订单表"""
+    # unique 唯一
     status_choices = (
         (1, "待执行"),
         (2, "进行中"),
@@ -94,4 +97,7 @@ class TransactionRecord(ActiveBaseModel):
 
     order_oid = models.CharField(verbose_name="订单号", max_length=64, null=True, blank=True, db_index=True)
     create_datetime = models.DateTimeField(verbose_name="交易时间", auto_now_add=True)
+
+    # null 该字段是否可以为空
+    # blank 该字段在进行表单验证时，是否可以为空
     memo = models.TextField(verbose_name="备注", null=True, blank=True)
