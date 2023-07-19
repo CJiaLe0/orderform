@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>sms_login</title>
+    <title>Title</title>
     <link rel="stylesheet" href="{% static 'plugins/bootstrap/css/bootstrap.css' %}">
     <style>
         .box {
@@ -24,25 +24,33 @@
 <body>
 <div class="box">
     <form method="post">
-        <h2 style="text-align: center">短信登录</h2>
+        <h2 style="text-align: center;">短信登录</h2>
         {% csrf_token %}
         <div class="form-group">
-            <label class="">手机号</label>
-            <input type="text" class="form-control" name="mobile" placeholder="手机号">
+            <label>角色</label>
+            {{ form1.role }}
         </div>
         <div class="form-group">
-            <label for="">短信验证码</label>
+            <label>手机号</label>
+            <span style="color: red;">{{ error }}</span>
+            {{ form1.mobile }}
+        </div>
+        <div class="form-group">
+            <label>短信验证码</label>
             <div class="row">
                 <div class="col-xs-7">
-                    <input type="text" class="form-control" name="auth_code" placeholder="短信验证码">
+                    {{ form1.code }}
                 </div>
                 <div class="col-xs-5">
-                    <button type="submit" class="btn btn-secondary" id="sendCode" name="sendCode">发送验证码</button>
+                    <input type="button" value="发送短信" class="btn btn-default"/>
                 </div>
             </div>
+
         </div>
+
+
         <button type="submit" class="btn btn-primary">登 录</button>
-        <a href="{% url 'login' %}" style="float: right">用户名登录</a>
+        <a href="{% url 'login' %}" style="float: right;">用户名登录</a>
     </form>
 </div>
 </body>
