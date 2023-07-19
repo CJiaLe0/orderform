@@ -29,18 +29,15 @@
         {% csrf_token %}
         <div class="form-group">
             <label>角色</label>
-            <select class="form-control">
-               <option>管理员</option>
-               <option>客户</option>
-            </select>
+            {{ form.role }}
         </div>
         <div class="form-group">
-            <label for="username">用户名</label>
-            <input type="text" class="form-control" id="username" name="username" placeholder="用户名">
+            <label>用户名</label>
+            {{ form.username }}
         </div>
         <div class="form-group">
-            <label for="password">密码</label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="账户密码">
+            <label>密码</label>
+            {{ form.password }}
         </div>
         <button type="submit" class="btn btn-primary">登 录</button>
         <span style="color: red">{{ error }}</span>
